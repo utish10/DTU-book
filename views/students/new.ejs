@@ -1,0 +1,282 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <h3 class="text-muted">Add Student</h3>
+    <div class="col mt-2">
+      <form
+        action="/students"
+        method="POST"
+        novalidate
+        class="validated-form"
+        enctype="multipart/form-data"
+      >
+        <div class="row">
+          <div class="col mb-3 form-group">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col mb-3 form-group">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="emailAddress" class="form-label">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="emailAddress"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="phoneNumber" class="form-label">Phone</label>
+          <input
+            type="number"
+            id="phoneNumber"
+            name="phoneNumber"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="row">
+          <div class="col mb-3 form-group">
+            <label for="gender" class="form-label">Gender</label>
+            <select name="gender" id="gender" class="form-select">
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Others">Others</option>
+            </select>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col mb-3 form-group">
+            <label for="dateOfBirth" class="form-label">Date of Birth</label>
+            <input
+              type="date"
+              id="dateOfBirth"
+              name="dateOfBirth"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="mb-3 form-group">
+          <textarea
+            name="residence"
+            id="residence"
+            cols="30"
+            rows="5"
+            class="form-control"
+            placeholder="Enter Residence"
+            required
+          ></textarea>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="classTenthSchool" class="form-label"
+            >Class 10th School</label
+          >
+          <input
+            type="text"
+            name="classTenthSchool"
+            id="classTenthSchool"
+            required
+            class="form-control"
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="row">
+          <div class="mb-3 form-group col">
+            <label for="classTenthBoard" class="form-label"
+              >Class 10th Board</label
+            >
+            <select
+              name="classTenthBoard"
+              id="classTenthBoard"
+              class="form-select"
+              required
+            >
+              <option value="CBSE">CBSE</option>
+              <option value="ISC">ISC</option>
+              <option value="ICSE">ISCE</option>
+              <option value="NIOS">NIOS</option>
+              <option value="UP Board">UP Board</option>
+              <option value="JKBOSE">JKBOSE</option>
+              <option value="RBSE">RBSE</option>
+              <option value="HPBOSE">HPBOSE</option>
+              <option value="MPBOSE">MPBOSE</option>
+              <option value="CGBSE">CGBSE</option>
+              <option value="PSEB">PSEB</option>
+              <option value="BSEH">BSEH</option>
+              <option value="BSEB">BSEB</option>
+              <option value="GSEB">GSEB</option>
+              <option value="MSBSHSE">MSBSHSE</option>
+              <option value="BIEAP">BIEAP</option>
+              <option value="BSEAP">BSEAP</option>
+              <option value="WBBSE">WBBSE</option>
+              <option value="WBCHSE">WBCHSE</option>
+            </select>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3 form-group col">
+            <label for="classTenthScore" class="form-label"
+              >Class 10th Score</label
+            >
+            <input
+              type="number"
+              name="classTenthScore"
+              id="classTenthScore"
+              required
+              class="form-control"
+              min="0"
+              max="100"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3 form-group col">
+            <label for="classTenthYear" class="form-label"
+              >Class 10th Year</label
+            >
+            <input
+              type="number"
+              name="classTenthYear"
+              id="classTenthYear"
+              required
+              class="form-control"
+              min="2010"
+              max="2022"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="classTwelfthSchool" class="form-label"
+            >Class 12th School</label
+          >
+          <input
+            type="text"
+            name="classTwelfthSchool"
+            id="classTwelfthSchool"
+            required
+            class="form-control"
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="row">
+          <div class="mb-3 form-group col">
+            <label for="classTwelfthBoard" class="form-label"
+              >Class 12th Board</label
+            >
+            <select
+              name="classTwelfthBoard"
+              id="classTwelfthBoard"
+              class="form-select"
+              required
+            >
+              <option value="CBSE">CBSE</option>
+              <option value="ISC">ISC</option>
+              <option value="ICSE">ISCE</option>
+              <option value="NIOS">NIOS</option>
+              <option value="UP Board">UP Board</option>
+              <option value="JKBOSE">JKBOSE</option>
+              <option value="RBSE">RBSE</option>
+              <option value="HPBOSE">HPBOSE</option>
+              <option value="MPBOSE">MPBOSE</option>
+              <option value="CGBSE">CGBSE</option>
+              <option value="PSEB">PSEB</option>
+              <option value="BSEH">BSEH</option>
+              <option value="BSEB">BSEB</option>
+              <option value="GSEB">GSEB</option>
+              <option value="MSBSHSE">MSBSHSE</option>
+              <option value="BIEAP">BIEAP</option>
+              <option value="BSEAP">BSEAP</option>
+              <option value="WBBSE">WBBSE</option>
+              <option value="WBCHSE">WBCHSE</option>
+            </select>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3 form-group col">
+            <label for="classTwelfthScore" class="form-label"
+              >Class 12th Score</label
+            >
+            <input
+              type="number"
+              name="classTwelfthScore"
+              id="classTwelfthScore"
+              required
+              class="form-control"
+              min="0"
+              max="100"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3 form-group col">
+            <label for="classTwelfthYear" class="form-label"
+              >Class 12th Year</label
+            >
+            <input
+              type="number"
+              name="classTwelfthYear"
+              id="classTwelfthYear"
+              required
+              class="form-control"
+              min="2010"
+              max="2022"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 form-group col">
+            <label
+              for="formFileSingle"
+              id="image"
+              name="image"
+              class="form-label"
+              >Photograph</label
+            >
+            <input
+              type="file"
+              class="form-control"
+              name="photograph"
+              id="formFileSingle"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3 form-group col">
+            <label for="course" class="form-label">Course</label>
+            <select name="course" id="course" required class="form-select">
+              <% for(let title of coursesTitles){ %>
+              <option value="<%=title%>"><%= title %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-success w-100 my-3" type="submit">
+          Add Student
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

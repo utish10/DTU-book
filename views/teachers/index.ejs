@@ -1,0 +1,39 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <h2 class="text-muted">Teachers</h2>
+</div>
+
+<div class="row my-3">
+  <% for(let teacher of teachersList){ %>
+  <div class="card my-1">
+    <div class="card-body">
+      <div class="row">
+        <h6 class="card-title col-6">
+          <a href="/teachers/<%=teacher._id%>"
+            ><%=teacher.firstName%> <%=teacher.lastName%></a
+          >
+        </h6>
+        <div
+          class="col-5 float-center d-inline text-muted d-none d-m-block d-lg-block d-xl-block"
+        >
+          <p class="card-text tezt-muted"><%= teacher.subject.title %></p>
+        </div>
+        <% if(currentUser.role == "Admin"){ %>
+        <div
+          class="col-1 float-end d-inline text-muted d-none d-lg-block d-xl-block"
+        >
+          <form
+            class="d-inline"
+            action="/teachers/<%=teacher._id%>/?_method=DELETE"
+            method="POST"
+          >
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>

@@ -1,0 +1,43 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row my-2">
+    <div class="card-shadow mt-6">
+      <div class="card-header">Scorecard</div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Course: </b><%=foundCourse.title%></li>
+          <li class="list-group-item">
+            <b>Teacher: </b><%= foundTeacher.designation%> <%=
+            foundTeacher.firstName %> <%= foundTeacher.lastName %>
+          </li>
+          <li class="list-group-item">
+            <b>Description: </b><%= currentScore.description %> Examination
+          </li>
+          <li class="list-group-item">
+            <b>Subject: </b><%= foundSubject.title %>
+          </li>
+          <li class="list-group-item">
+            <b>Student Name: </b> <%= foundStudent.firstName %> <%=
+            foundStudent.lastName %>
+          </li>
+          <li class="list-group-item">
+            <b>Student ID: </b> <%= foundStudent._id %>
+          </li>
+          <li class="list-group-item">
+            <b>Marks Obtained: </b> <%= score.score
+            %>/<%=currentScore.maxMarks%>
+          </li>
+          <% if(currentUser.role == "Teacher"){ %>
+          <li class="card-link">
+            <a
+              href="/editmarks?description=<%=currentScore.description%>&subject=<%=foundSubject.title%>&studentId=<%=foundStudent._id%>&entryRecord=<%=currentScore._id%>"
+              >Edit</a
+            >
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

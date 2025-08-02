@@ -1,0 +1,46 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <h1 class="text-muted">New Attendance Record</h1>
+    <div class="col mt-2">
+      <p>
+        Teacher:
+        <b
+          ><%= currentTeacher.designation %> <%= currentTeacher.firstName %> <%=
+          currentTeacher.lastName %>
+        </b>
+        <br />
+        Subject: <b><%= currentSubject.title %> </b>
+      </p>
+      <hr />
+      <form
+        action="/attendance/selectcourse"
+        method="POST"
+        novalidate
+        class="validated-form mt-5"
+      >
+        <div class="form-group my-2">
+          <label for="course" class="form-label">Course</label>
+          <select name="course" id="course" required class="form-select">
+            <option selected>Select</option>
+            <% for(let course of currentTeacher.courses){ %>
+            <option value="<%=course.title%>"><%= course.title %></option>
+            <% } %>
+          </select>
+        </div>
+        <div class="form-group my-2">
+          <label for="date" class="form-label">Date</label>
+          <input
+            type="date"
+            id="course"
+            name="date"
+            required
+            class="form-control"
+          />
+        </div>
+        <button class="btn btn-success w-100 mt-5">Go Ahead!</button>
+      </form>
+    </div>
+  </div>
+</div>

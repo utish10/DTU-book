@@ -1,0 +1,132 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <h3 class="text-muted">Edit Teacher</h3>
+    <div class="col mt-2">
+      <form
+        action="/teachers/<%=foundTeacher._id%>?_method=PUT"
+        method="POST"
+        novalidate
+        class="validated-form"
+        enctype="multipart/form-data"
+      >
+        <div class="row">
+          <div class="col mb-3 form-group">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-control"
+              required
+              value="<%=foundTeacher.firstName%>"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col mb-3 form-group">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-control"
+              required
+              value="<%=foundTeacher.lastName%>"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="phoneNumber" class="form-label">Phone</label>
+          <input
+            type="number"
+            id="phoneNumber"
+            name="phoneNumber"
+            class="form-control"
+            required
+            value="<%=foundTeacher.phoneNumber%>"
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="row">
+            <div class="col mb-3 form-group">
+                <label for="gender" class="form-label">Gender</label>
+                <select name="gender" id="gender" class="form-select">
+                    <option value="Female" <% if(foundTeacher.gender == "Female") {%> selected <% } %> >Female</option>
+                    <option value="Male" <% if(foundTeacher.gender == "Male") {%> selected <% } %>  >Male</option>
+                    <option value="Others" <% if(foundTeacher.gender == "Others"){ %> selected <% } %>  >Others</option>
+                </select>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col mb-3 form-group">
+                <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                <input 
+                type="date" 
+                id="dateOfBirth" 
+                name="dateOfBirth" 
+                class="form-control" 
+                required
+                value="<%=foundTeacher.dateOfBirth%>">
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="residence" class="form-label">Residence</label>
+          <textarea 
+          name="residence" 
+          id="residence" 
+          cols="30" 
+          rows="5"
+          required
+          class="form-control"><%= foundTeacher.residence %> </textarea>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="designation" class="form-label">Designation</label>
+          <select name="designation" id="designation" required class="form-select">
+            <option value="Professor" <% if(foundTeacher.designation == "Professor") { %> selected <% } %> >Professor</option>
+            <option value="Assistant Professor" <% if(foundTeacher.designation == "Assistant Professor") {%> selected <% } %>  >Assistant Professor</option>
+            <option value="Associate Professor" <% if(foundTeacher.designation == "Associate Professor") { %> selected <% } %>  >Associate Professor</option>
+            <option value="Instructor" <% if(foundTeacher.designation == "Instructor"){ %> selected <% } %>  >Instructor</option>
+          </select>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="pastExperience" class="form-label">Past Experience</label>
+          <textarea 
+          name="pastExperience" 
+          id="pastExperience" 
+          cols="30" 
+          rows="5" 
+          class="form-control" 
+          required>
+          <%= foundTeacher.pastExperience %> 
+        </textarea>
+        <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="courses0" class="form-label">Enter Courses (enter exact titles)</label>
+          <input type="text" name="courses[]" id="courses0" class="form-control my-2" <% if(foundTeacher.courses[0]){ %> value="<%=foundTeacher.courses[0].title%>" <% } %> >
+          <input type="text" name="courses[]" id="courses1" class="form-control my-2" <% if(foundTeacher.courses[1]){ %> value="<%=foundTeacher.courses[1].title%>" <% } %> >
+          <input type="text" name="courses[]" id="courses2" class="form-control my-2" <% if(foundTeacher.courses[2]){ %> value="<%=foundTeacher.courses[2].title%>" <% } %> >
+          <input type="text" name="courses[]" id="courses3" class="form-control my-2" <% if(foundTeacher.courses[3]){ %> value="<%=foundTeacher.courses[3].title%>" <% } %> >
+          <input type="text" name="courses[]" id="courses4" class="form-control my-2" <% if(foundTeacher.courses[4]){ %> value="<%=foundTeacher.courses[4].title%>" <% } %> >
+        </div>
+        <div class="my-2 text-muted">
+          <ul>
+            <% for(let title of courseTitles){ %>
+              <li><%= title %> </li>
+              <% } %>  
+          </ul>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="formFileSingle" id="image" name="image" class="form-label">Photograph</label>
+          <input type="file" id="image" name="photograph" required class="form-control">
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <button class="btn btn-success w-100 my-2">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

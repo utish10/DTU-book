@@ -1,0 +1,53 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <h3 class="text-muted">Edit Marks</h3>
+    <div class="col mt-2">
+      <form action="/editmarks" method="POST" novalidate class="validated-form">
+        <div class="form-group my-3">
+          <label for="description" class="form-label">Description</label>
+          <select name="description" id="description" class="form-select">
+            <option value="<%=description%>"><%= description %></option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="studentId" class="form-label">Student ID</label>
+          <select name="studentId" id="studentId" class="form-select">
+            <option value="<%=foundStudent._id%>">
+              <%= foundStudent._id %>
+            </option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="subject" class="form-label">Subject</label>
+          <select name="subject" id="subject" class="form-select">
+            <option value="<%=foundSubject.title%>">
+              <%= foundSubject.title %>
+            </option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="newMarks" class="form-label">New Score</label>
+          <input
+            type="number"
+            class="form-control"
+            min="0"
+            max="<%=maxMarks%>"
+            required
+            id="newMarks"
+            name="newMarks"
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="entryRecord" class="form-label">Record ID</label>
+          <select name="entryRecord" id="entryRecord" class="form-select">
+            <option value="<%=entryRecord%>"><%= entryRecord %></option>
+          </select>
+        </div>
+        <button class="btn btn-success w-100 mt-5">Modify</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <h3 class="text-muted">Edit Course</h3>
+    <div class="col">
+      <div class="card-shadow">
+        <div class="card-body">
+          <form
+            action="/courses/<%=foundCourse._id%>?_method=PUT"
+            method="POST"
+            novalidate 
+            class="validated-form"
+          >
+            <div class="mb-3 form-group">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                class="form-control"
+                autofocus
+                required
+                value="<%=foundCourse.title%>"
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="year">Year</label>
+              <select name="year" id="year" class="form-select" required>
+                <option value="1" <% if(foundCourse.year == "1"){%>selected<%} %> >First</option>
+                <option value="2" <% if(foundCourse.year == "2"){%>selected<%} %> >Second</option>
+                <option value="3" <% if(foundCourse.year == "3"){%>selected<%} %> >Third</option>
+                <option value="4" <% if(foundCourse.year == "4"){%>selected<%} %> >Fourth</option>
+              </select>
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="mb-3">
+              <label for="semester">Semester</label>
+              <select
+                name="semester"
+                id="semester"
+                class="form-select"
+                required
+              >
+                <option value="Even" <% if(foundCourse.semester == "Even"){%>selected<%} %> >Even</option>
+                <option value="Odd" <% if(foundCourse.semester == "Odd"){%>selected<%} %> >Odd</option>
+              </select>
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="duration">Duration (in months)</label>
+              <input
+                type="number"
+                id="duration"
+                name="duration"
+                class="form-control"
+                required
+                value="<%=foundCourse.duration%>"
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="mb-3">
+              <label for="subjects0">
+                Subjects (Enter exact names from the list)
+              </label>
+              <input
+                type="text"
+                name="subjects[]"
+                id="subjects0"
+                class="form-control mb-1"
+                required
+                value="<%=foundCourse.subjects[0].title%>"
+              />
+              <input
+                type="text"
+                name="subjects[]"
+                id="subjects1"
+                class="form-control mb-1"
+                required
+                value="<%=foundCourse.subjects[1].title%>"
+              />
+              <input
+                type="text"
+                name="subjects[]"
+                id="subjects2"
+                class="form-control mb-1"
+                required
+                value="<%=foundCourse.subjects[2].title%>"
+              />
+              <input
+                type="text"
+                name="subjects[]"
+                id="subjects3"
+                class="form-control mb-1"
+                <% if(foundCourse.subjects.length >= 4){ %>
+                  value="<%=foundCourse.subjects[3].title%>"
+                  <% } %>  
+              />
+              <input
+                type="text"
+                name="subjects[]"
+                id="subjects4"
+                class="form-control mb-1"
+                <% if(foundCourse.subjects.length == 5){ %>
+                  value="<%=foundCourse.subjects[4].title%>"
+                  <% } %>  
+              />
+              <div class="text-muted my-3">
+                <ul>
+                  <% for(let subjectTitle of subjectsTitles){ %>
+                  <li><%= subjectTitle %></li>
+                  <% } %>
+                </ul>
+              </div>
+              <button class="btn btn-success w-100" type="submit">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+
+    <div class="row my-2">
+        <% if(currentUser.role == "Teacher"){ %>
+            <% if(foundTeacher.courses.indexOf(foundStudent.course._id) != -1){ %>
+
+        <div class="col">
+            <div class="card-shadow mt-6 row">
+                <div class="card-header">Performance in <%= foundTeacher.subject.title %> </div>
+                <div class="card-body">
+                    <form action="/searchMarks" method="POST">
+                        <div class="form-group mb-3">
+                            <label for="studentId" class="form-label">Student ID</label>
+                            <select name="studentId" id="studentId" class="form-select">
+                                <option value="<%=foundStudent._id%>"><%= foundStudent._id %> </option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select name="subject" id="subject" class="form-select">
+                                <option selected value="<%=foundTeacher.subject.title%>"><%= foundTeacher.subject.title %> </option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <select name="description" id="description" class="form-select">
+                                <option value="Mid-Sem">Mid-Sem</option>
+                                <option value="End-Sem">End-Sem</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary w-100">View Score</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <% } %> 
+        <% } %> 
+        <div class="col">
+            <div class="card mb-3" >
+                <img class="card-img-top" src="<%=foundStudent.photograph.url%>"></img>
+                <div class="card-body">
+                    <h5 class="card-title text-muted card-header"><%= foundStudent.firstName %> <%= foundStudent.lastName %>  </h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Course: </b><%= foundStudent.course.title %> </li>
+                        <li class="list-group-item"><b>Email Address: </b><%= foundStudent.emailAddress %> </li>
+                        <li class="list-group-item"><b>Date of Birth</b> <%= foundStudent.dateOfBirth %> </li>
+                        <% if(currentUser.role == "Teacher" || currentUser.role == "Admin" || currentUser.emailAddress == foundStudent.emailAddress){ %> 
+                        <li class="list-group-item"><b>Phone Number: </b><%= foundStudent.phoneNumber %> </li>
+                        <% } %> 
+                        <% if(currentUser.role == "Admin"){ %>
+                            <a href="/students/<%=foundStudent._id%>/edit">Edit</a>
+                            <% } %>  
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <% if(currentUser.emailAddress == foundStudent.emailAddress || currentUser.role == "Teacher" || currentUser.role == "Admin"){ %> 
+        <div class="col">
+                <div class="card-shadow mb-5 row">
+                    <div class="card-header">Current Semester Attendance</div>
+                     <% for(let subject of foundStudent.currentSemesterAttendance ){ %>
+                        <li class="list-group-item"><b><%= subject.subjectName %></b> <%=subject.attendanceRecord.daysPresent%> days of <%= subject.attendanceRecord.totalDays %> days </li>
+                    <% } %>  
+                </div>
+                <% if(currentUser.role == "Student" && currentUser.emailAddress == foundStudent.emailAddress){ %> 
+                <div class="card-shadow mt-6 row">
+                    <div class="card-header">Current Semester Scores</div>
+                    <div class="card-body">
+                        <form action="/searchmarks" method="POST">
+                            <div class="form-group mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <select name="subject" id="subject" class="form-select" >
+                                    <% for(let title of subjectTitles){ %>
+                                        <option value="<%=title%>"><%=title %> </option> 
+                                        <% } %>  
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <select name="description" id="description" class="form-select">
+                                    <option value="Mid-Sem">Mid-Sem</option>
+                                    <option value="End-Sem">End-Sem</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary w-100">View Score</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %> 
+                <% } %> 
+    </div>
+</div>

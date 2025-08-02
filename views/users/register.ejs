@@ -1,0 +1,62 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <img
+          src="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg"
+          alt=""
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <form action="/users" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+              <label for="role">Role</label>
+              <select name="role" id="role" class="form-select">
+                <option value="<%=role%>"><%= role %></option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="emailAddress">Email Address</label>
+              <select name="emailAddress" id="emailAdress" class="form-select">
+                <option value="<%=emailAddress%>"><%= emailAddress %></option>
+              </select>
+              <div class="valid-feedback">Looks Good!</div>
+            </div>
+            <div class="mb-3">
+              <label for="username">Username</label>
+              <select name="username" id="username" class="form-select">
+                <option value="<%=username%>"><%= username %></option>
+              </select>
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="mb-3">
+              <label for="password">Password</label>
+              <div class="input-group" id="show_hide_password">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                  required
+                  value="<%=newPassword%>"
+                  data-toggle="password"
+                />
+                <div class="input-group-addon">
+                  <a href=""
+                    ><i class="fa fa-eye-slash" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <button class="btn btn-success w-100" type="submit">
+              Register
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

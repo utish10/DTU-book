@@ -1,0 +1,48 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="card shadow">
+        <img
+          src="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg"
+          alt=""
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <form action="/login" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                autofocus
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="mb-3">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="text-muted">
+              <p>*Your username is registered mobile number</p>
+            </div>
+            <div>
+              <button class="btn btn-success w-100" type="submit">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

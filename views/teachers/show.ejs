@@ -1,0 +1,62 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row my-2">
+    <div class="col">
+      <div class="card mb-3">
+        <img class="card-img-top" src="<%=foundTeacher.photograph.url%>" />
+        <div class="card-body">
+          <h5 class="card-title text-muted card-header mb-2">
+            <%= foundTeacher.designation %> <%= foundTeacher.firstName %> <%=
+            foundTeacher.lastName %>
+          </h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <b>Subject: </b><%= foundTeacher.subject.title %>
+            </li>
+            <li class="list-group-item">
+              <b>Email Address: </b><%= foundTeacher.emailAddress %>
+            </li>
+            <% if(currentUser.role == "Admin"){ %>
+            <li class="list-group-item">
+              <b>Phone Number: </b><%= foundTeacher.phoneNumber %>
+            </li>
+            <% } %>
+            <li class="list-group-item">
+              <b>Date of Birth: </b><%= foundTeacher.dateOfBirth %>
+            </li>
+            <li class="list-group-item">
+              <b>Past Experience: </b><%= foundTeacher.pastExperience %>
+            </li>
+            <li class="list-group-item">
+              <b>Courses:</b>
+              <ul>
+                <% for(let course of foundTeacher.courses){ %>
+                <li><%=course.title%></li>
+                <% } %>
+              </ul>
+            </li>
+            <% if(currentUser.role == "Admin") {%>
+            <div class="row">
+              <a
+                href="/teachers/<%=foundTeacher._id%>/edit"
+                class="btn btn-warning col-6 mt-3"
+                role="button"
+                >Edit</a
+              >
+
+              <form
+                class="d-inline-block col-6 mt-3"
+                action="/teachers/<%=foundTeacher._id%>/?_method=DELETE"
+                method="POST"
+              >
+                <button class="btn btn-danger w-100">Delete</button>
+              </form>
+            </div>
+            <%}%>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

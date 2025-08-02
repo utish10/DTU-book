@@ -1,0 +1,99 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <h3 class="text-muted">Edit Student</h3>
+    <div class="col mt-2">
+      <form
+        action="/students/<%=foundStudent._id%>?_method=PUT"
+        method="POST"
+        novalidate
+        class="validated-form"
+      >
+        <div class="row">
+          <div class="col mb-3 form-group">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-control"
+              required
+              value="<%=foundStudent.firstName%>"
+            />
+            <div class="valid-feedback">Looks Good!</div>
+          </div>
+          <div class="col mb-3 form-group">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-control"
+              required
+              value="<%=foundStudent.lastName%>"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="phoneNumber" class="form-label">Phone</label>
+          <input
+            type="number"
+            id="phoneNumber"
+            name="phoneNumber"
+            class="form-control"
+            required
+            value="<%=foundStudent.phoneNumber%>"
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="row">
+          <div class="col mb-3 form-group">
+            <label for="gender" class="form-label">Gender</label>
+            <select name="gender" id="gender" class="form-select">
+              <option value="Female" <% if(foundStudent.gender == "Female") {%> selected <% } %> >Female</option>
+              <option value="Male" <% if(foundStudent.gender == "Male") {%> selected <% } %> >Male</option>
+              <option value="Others" <% if(foundStudent.gender == "Others") {%> selected <% } %> >Others</option>
+            </select>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="col mb-3 form-group">
+            <label for="dateOfBirth" class="form-label">Date of Birth</label>
+            <input
+              type="date"
+              id="dateOfBirth"
+              name="dateOfBirth"
+              class="form-control"
+              required
+              value="<%=foundStudent.dateOfBirth%>"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="mb-3 form-group">
+          <textarea
+            name="residence"
+            id="residence"
+            cols="30"
+            rows="5"
+            required
+            class="form-control"
+          >
+<%= foundStudent.residence %> </textarea
+          >
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3 form-group">
+            <label for="course" class="form-label">Course</label>
+            <select name="course" id="course" required class="form-select">
+                <% for(let title of courseTitles){ %>
+                    <option value="<%=title%>"<% if(foundStudent.course.title == title){ %>selected <% } %> ><%= title %> </option>
+                    <% } %>  
+            </select>
+        </div>
+        <button class="btn btn-success w-100 my-3" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+body {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("https://media-exp1.licdn.com/dms/image/C511BAQHZAX2F0KR0lw/company-background_10000/0/1577050135087?e=2147483647&v=beta&t=S0ZF4AiyafMHMVt0A12IZ6nx3QF_G9XSf428FD15_ZU");
+  background-size: cover;
+  background-position: center;
+  text-shadow: 0 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+
+.cover-container {
+  max-width: 60vw;
+}
+
+.navbar-brand {
+  padding: 0.25rem 0;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  border-bottom: 0.25rem solid transparent;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+.nav-link {
+  padding: 0.25rem 0;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 1rem;
+  border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover {
+  color: white;
+  border-bottom-color: white;
+}
+
+.btn-lg,
+.btn-lg:hover {
+  font-weight: bold;
+  background-color: white;
+  color: rgba(0, 0, 0);
+  text-shadow: none;
+}
+
+#mainTitle {
+  font-family: "Stick No Bills", sans-serif;
+}

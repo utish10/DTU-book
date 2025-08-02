@@ -1,0 +1,53 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row my-2">
+    <div class="card-shadow mt-6">
+      <div class="card-header"><%= foundRecord.date %></div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            Course: <b><%= foundRecord.course.title %> </b>
+          </li>
+          <li class="list-group-item">
+            Teacher:
+            <b
+              ><%= foundRecord.teacher.designation %> <%=
+              foundRecord.teacher.firstName %> <%= foundRecord.teacher.lastName
+              %>
+            </b>
+          </li>
+          <li class="list-group-item">
+            Subject:
+            <b><%= foundRecord.subject.title %> </b>
+          </li>
+          <li class="list-group-item">
+            Absentees:
+            <ul>
+              <% for(let record of foundRecord.attendanceMap){ %>
+              <li>
+                <b
+                  ><%=record.studentId.firstName%> <%= record.studentId.lastName
+                  %>
+                </b>
+                <%= record.studentId._id %>
+              </li>
+              <% } %>
+            </ul>
+          </li>
+        </ul>
+        <% if(currentUser.role == "Teacher"){ %>
+        <div class="row">
+          <form
+            action="/attendance/<%=foundRecord._id%>/?_method=DELETE"
+            method="POST"
+            class="d-inline-block col-6 mt-3"
+          >
+            <button class="btn btn-danger w-100">Delete</button>
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

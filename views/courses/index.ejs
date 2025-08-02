@@ -1,0 +1,38 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <h2 class="text-muted">Courses</h2>
+</div>
+
+<div class="row my-3">
+  <% for(let course of coursesList){ %>
+  <div class="card shadow my-3">
+    <div class="card-body">
+      <div class="row">
+        <h4 class="card-title col">
+          <a href="courses/<%=course._id%>"><%= course.title %> </a>
+        </h4>
+        <% if(currentUser.role == "Admin"){ %> 
+        <div class="col-1 float-end d-inline text-muted d-none d-lg-block d-xl-block">
+          <form
+            class="d-inline"
+            method="POST"
+            action="/courses/<%=course._id%>/?_method=DELETE"
+          >
+            <button class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+        <% } %> 
+      </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Year:</b><%= course.year %></li>
+        <li class="list-group-item"><b>Semester:</b><%= course.semester %></li>
+        <li class="list-group-item">
+          <b>Students enrolled: </b><%= course.students.length %>
+        </li>
+      </ul>
+    </div>
+    <% } %>
+  </div>
+</div>
